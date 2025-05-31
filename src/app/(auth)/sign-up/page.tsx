@@ -1,0 +1,19 @@
+import { auth } from '@/lib/auth'
+import SignUpView from '@/module/auth/views/signU[-view'
+import { headers } from 'next/headers'
+import { redirect } from 'next/navigation'
+import React from 'react'
+
+async function SingUpPage() {
+      const session =await auth.api.getSession({
+       headers:await headers()
+      })
+      if(session) {
+        redirect("/")
+      }
+    return (
+       <SignUpView/>
+    )
+}
+
+export default SingUpPage
