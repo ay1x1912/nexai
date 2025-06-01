@@ -2,7 +2,7 @@
 import { auth } from "@/lib/auth";
 
 
-import SignOutButton from "@/module/auth/components/sign-out-button";
+import SignOutButton from "@/module/auth/ui/components/sign-out-button";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 

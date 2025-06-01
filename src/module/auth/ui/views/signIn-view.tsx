@@ -13,8 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
-import { signInSchema } from "../schema";
+import { Card, CardContent } from "@/components/ui/card";;
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
@@ -23,6 +22,7 @@ import { authClient } from "@/lib/authClient";
 import { useRouter } from "next/navigation";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { OctagonAlertIcon } from "lucide-react";
+import { signInSchema } from "../../schema";
 function SignInView() {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);

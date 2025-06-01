@@ -1,5 +1,6 @@
 import { auth } from '@/lib/auth'
-import SignUpView from '@/module/auth/views/signU[-view'
+import SignUpView from '@/module/auth/ui/views/signUp-view'
+
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import React from 'react'

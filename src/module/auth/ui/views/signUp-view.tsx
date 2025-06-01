@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { signUpSchema } from "../schema";
+import { signUpSchema } from "../../schema";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
