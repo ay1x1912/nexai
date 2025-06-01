@@ -50,7 +50,7 @@ function DashBoardSideBar() {
           </Link>
         </div>
       </SidebarHeader>
-      <Separator className="bg-muted-foreground my-4" />
+      <Separator className="my-4 border-t border-gray-400" />
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
@@ -79,7 +79,7 @@ function DashBoardSideBar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <Separator className="bg-muted-foreground my-4" />
+      <Separator className="my-4 border-b border-gray-400" />
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>

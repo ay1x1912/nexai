@@ -66,10 +66,10 @@ function DashBoardUserButton() {
             <DrawerTitle>{data.user.name}</DrawerTitle>
             <DrawerDescription>{data.user.email}</DrawerDescription>
           </DrawerHeader>
-          <div className="flex w-full justify-between">
+          <div className="flex w-full justify-between p-4">
             Billing <CreditCardIcon className="size-4" />
           </div>
-          <div onClick={()=>onLogout()} className="w-full flex justify-between">
+          <div onClick={()=>onLogout()} className="w-full flex justify-between p-4">
             Logout <LogOutIcon className="size-4" />
           </div>
         </DrawerContent>
