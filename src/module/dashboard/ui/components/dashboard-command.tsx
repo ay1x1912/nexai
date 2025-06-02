@@ -1,11 +1,11 @@
 import React from 'react'
 import {
-    CommandDialog,
     CommandEmpty,
     CommandGroup,
     CommandInput,
     CommandItem,
     CommandList,
+    CommandResponsiveDialog,
     
   } from "@/components/ui/command"
 
@@ -16,15 +16,15 @@ interface DashBoardCommandProps{
 }
 function DashBoardCommand({ open, setOpen }: DashBoardCommandProps) {
     return (
-        <CommandDialog open={open} onOpenChange={setOpen}>
-            <CommandInput placeholder="Find a metting or a agent" />
-            <CommandList>
-                <CommandEmpty>No results found.</CommandEmpty>
-                <CommandGroup >
-                    <CommandItem>Test</CommandItem>
-                </CommandGroup>
-            </CommandList>
-        </CommandDialog>
-    )
+      <CommandResponsiveDialog open={open} onOpenChange={setOpen}>
+        <CommandInput placeholder="Find a metting or a agent" />
+        <CommandList>
+          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandGroup>
+            <CommandItem>Test</CommandItem>
+          </CommandGroup>
+        </CommandList>
+      </CommandResponsiveDialog>
+    );
 }
 export default DashBoardCommand

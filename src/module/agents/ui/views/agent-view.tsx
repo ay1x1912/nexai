@@ -11,10 +11,15 @@ function AgentView() {
         trpc.agents.getMany.queryOptions()
     )
     return (
-        <div>
-            {JSON.stringify(data)}
-        </div>
-    )
+      <div className="flex justify-center items-center h-full">
+        {data.map((item) => (
+          <div key={item.id}>
+            <p> {item.name}</p>
+            <p> {item.instruction}</p>
+          </div>
+        ))}
+      </div>
+    );
 }
 
 export default AgentView

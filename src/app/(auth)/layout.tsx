@@ -1,6 +1,7 @@
-import React, { HtmlHTMLAttributes } from 'react'
-interface AuthLayout extends HtmlHTMLAttributes<HTMLDivElement>{
-    
+import React from "react"
+
+interface AuthLayout {
+    children:React.ReactNode
 }
 export default function AuthLayout({children}:AuthLayout) {
     return (

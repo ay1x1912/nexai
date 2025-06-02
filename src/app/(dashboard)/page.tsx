@@ -2,8 +2,6 @@
 import { auth } from "@/lib/auth";
 
 
-import SignOutButton from "@/module/auth/ui/components/sign-out-button";
-import HomeView from "@/module/dashboard/views/home-view";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -16,10 +14,9 @@ async function Home() {
   }
 
   return (
-    <div className="flex h-screen items-center justify-center text-xl font-medium">
-     {session.user.name}
-      <SignOutButton />
-      <HomeView/>
+    <div className="flex h-full items-center justify-center text-xl font-medium bg-amber-200">
+      {session.user.name}
+     
     </div>
   );
 }
