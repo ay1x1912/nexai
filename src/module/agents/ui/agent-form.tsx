@@ -64,7 +64,7 @@ export default function AgentForm({onCancel,onSuccess ,initialValues}: AgentForm
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="mx-auto max-w-3xl space-y-8 py-2"
+        className="py-4 space-y-4"
       >
         <GeneratedAvatar
           className="size-24"

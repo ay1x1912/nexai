@@ -2,13 +2,16 @@ import { db } from "@/db";
 import {agent } from "@/db/schema";
 import { createTRPCRouter, proctedProcedure } from "@/trpc/init";
 import { TRPCError } from "@trpc/server";
-import { and, eq } from "drizzle-orm";
+import { and, eq, getTableColumns, sql } from "drizzle-orm";
 import {z} from "zod"
 import { AgentSchema } from "../agentSchema";
 export const agentProcedurec = createTRPCRouter({
   getMany: proctedProcedure.query(async ({ ctx }) => {
     const agents = await db
-      .select()
+      .select({
+        ...getTableColumns(agent),
+        mettings: sql<number>`5`,
+      })
       .from(agent)
       .where(eq(agent.userId, ctx.user.id));
     if (!agents) {
@@ -18,7 +21,13 @@ export const agentProcedurec = createTRPCRouter({
   }),
 
     getOne: proctedProcedure.input(z.object({id:z.string()})).query(async ({ ctx ,input}) => {
-        const [data] = await db.select().from(agent).where(and(eq(agent.id, input.id), eq(agent.userId, ctx.user.id)))
+      const [data] = await db
+        .select({
+          ...getTableColumns(agent),
+          mettings: sql<number>`5`,
+        })
+        .from(agent)
+        .where(and(eq(agent.id, input.id), eq(agent.userId, ctx.user.id)));
         if (!data) {
           throw new TRPCError({
             code: "NOT_FOUND",
