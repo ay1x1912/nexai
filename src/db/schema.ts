@@ -59,3 +59,13 @@ export const verification = pgTable("verification", {
     () => /* @__PURE__ */ new Date()
   ),
 });
+
+
+export const agent = pgTable("agent",{
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  instruction: text("instuction").notNull(),
+  userId: text("user_id").notNull().references(()=>user.id,{onDelete:"cascade"}),
+  updated_at: timestamp().defaultNow().notNull(),
+  created_at: timestamp().defaultNow().notNull(),
+})
