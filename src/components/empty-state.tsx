@@ -7,7 +7,7 @@ interface ErrorStateProps {
 }
 function EmptyState({ title, description }: ErrorStateProps) {
   return (
-    <div className="bg-background flex flex-col items-center justify-center gap-y-4 border">
+    <div className="flex flex-col items-center justify-center gap-y-4">
       <Image src={"/empty.svg"} alt="empty" width={240} height={240} />
       <div className="mx-auto flex max-w-lg flex-col gap-y-2 text-center">
         <h6 className="text-lg font-medium">{title}</h6>
