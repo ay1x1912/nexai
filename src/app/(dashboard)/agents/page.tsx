@@ -27,7 +27,8 @@ async function Home({searchParams}:Props) {
   const queryClient = getQueryClient();
   void queryClient.prefetchQuery(
     trpc.agents.getMany.queryOptions({
-      ...filters
+      ...filters,
+      pageSize:1
      
     }),
   );

@@ -27,16 +27,16 @@ interface AgentFormProps {
   
 }
 
-export default function AgentForm({onCancel,onSuccess ,initialValues}: AgentFormProps) {
+export default function AgentForm({ onCancel, onSuccess, initialValues }: AgentFormProps) {
   const form = useForm<z.infer<typeof AgentSchema>>({
     resolver: zodResolver(AgentSchema),
     defaultValues: {
       name: initialValues?.name || "",
-      instruction:initialValues?.instruction ||""
+      instruction: initialValues?.instruction || ""
     }
   });
   const trpc = useTRPC()
-  const queryClient=useQueryClient()
+  const queryClient = useQueryClient()
   const createAgent = useMutation(
     trpc.agents.create.mutationOptions({
       onSuccess: () => {
@@ -46,15 +46,30 @@ export default function AgentForm({onCancel,onSuccess ,initialValues}: AgentForm
       onError: (error) => {
         toast.error(error.message)
       }
-     })
+    })
   )
+  const updateAgent = useMutation(
+    trpc.agents.update.mutationOptions({
+      onSuccess: () => {
+        queryClient.invalidateQueries(trpc.agents.getMany.queryOptions({}));
+        if (initialValues?.id) {
+          queryClient.invalidateQueries(trpc.agents.getOne.queryOptions({ id: initialValues.id }));
+          
+        }
+        onSuccess?.();
+      },
+      onError: (error) => {
+        toast.error(error.message);
+      },
+    }),
+  );
   
   
-  const isPending = createAgent.isPending
+  const isPending = createAgent.isPending || updateAgent.isPending 
   const isEdit = !!initialValues?.id 
   function onSubmit(values: z.infer<typeof AgentSchema>) {
     if (isEdit) {
-      // Todo implement update todo
+      updateAgent.mutate({id:initialValues.id,...values})
     }
     else (
       createAgent.mutate(values)

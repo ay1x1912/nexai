@@ -10,18 +10,21 @@ import { DataTable } from "@/module/agents/ui/data-table";
 import EmptyState from "@/components/empty-state";
 import { useAgentFilters } from "../../hooks/use-agents-filte";
 import DataPagination from "../data-pagination";
+import { useRouter } from "next/navigation";
 
 function AgentView() {
   const trpc = useTRPC();
+  const router=useRouter()
   const [filters,setFilters] = useAgentFilters();
   const { data } = useSuspenseQuery(
     trpc.agents.getMany.queryOptions({
-      ...filters
+      ...filters,
+      pageSize:1
     }),
   );
   return (
     <div className="md-px-8 flex flex-1 flex-col gap-y-4 px-4 pb-4">
-      <DataTable columns={columns} data={data.items} />
+      <DataTable columns={columns} data={data.items} onRowClick={(row)=>router.push( (`/agents/${row.id}`))} />
       <DataPagination page={filters.page} totalPages={data.totalPages} onPageChange={(page:number)=>setFilters({page})}/>
       {data.items.length === 0 && (
         <EmptyState
